@@ -1,3 +1,3 @@
 <x-app-layout>
-    <h1>Admin</h1>
+    <h1>Esto es el dashboard</h1>
 </x-app-layout>

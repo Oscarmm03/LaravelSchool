@@ -1,4 +1,3 @@
-<div>
-    <!-- It is not the man who has too little, but the man who craves more, that is poor. - Seneca -->
-    <h1>Eres un estudiante</h1>
-</div>
+<x-app-layout>
+    <h1>Student</h1>
+</x-app-layout>

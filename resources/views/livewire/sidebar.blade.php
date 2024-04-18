@@ -16,16 +16,16 @@
             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('General') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('teacher.users') }}" :active="request()->routeIs('teacher.users')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Gestión usuarios') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('teacher.games') }}" :active="request()->routeIs('teacher.games')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Juegos') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('teacher.results') }}" :active="request()->routeIs('teacher.results')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Resultados') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('teacher.settings') }}" :active="request()->routeIs('teacher.settings')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Ajustes') }}
             </x-nav-link>
             @endif
@@ -33,13 +33,13 @@
             <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('General') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('student.games') }}" :active="request()->routeIs('student.games')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Juegos') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('student.results') }}" :active="request()->routeIs('student.results')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Resultados') }}
             </x-nav-link>
-            <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+            <x-nav-link href="{{ route('student.settings') }}" :active="request()->routeIs('student.settings')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Ajustes') }}
             </x-nav-link>
             @endif

@@ -32,17 +32,17 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/dashboard', [LoginController::class, 'index'])->name('dashboard');
 
     //Rutas ADMIN
-    Route::get('/users', [AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
+    Route::get('/admin-users', [AdminUserController::class, 'index'])->name('admin.users');
+    Route::get('/admin-settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
 
     //Rutas TEACHER
-    Route::get('/users', [TeacherUserController::class, 'index'])->name('teacher.users');
-    Route::get('/games', [TeacherGameController::class, 'index'])->name('teacher.games');
-    Route::get('/results', [TeacherResultsController::class, 'index'])->name('teacher.results');
-    Route::get('/settings', [TeacherSettingsController::class, 'index'])->name('teacher.settings');
+    Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');
+    Route::get('/teacher-games', [TeacherGameController::class, 'index'])->name('teacher.games');
+    Route::get('/teacher-results', [TeacherResultsController::class, 'index'])->name('teacher.results');
+    Route::get('/teacher-settings', [TeacherSettingsController::class, 'index'])->name('teacher.settings');
 
     //Rutas STUDENT
-    Route::get('/games', [StudentGameController::class, 'index'])->name('student.games');
-    Route::get('/results', [StudentResultsController::class, 'index'])->name('student.results');
-    Route::get('/settings', [StudentSettingsController::class, 'index'])->name('student.settings');
+    Route::get('/student-games', [StudentGameController::class, 'index'])->name('student.games');
+    Route::get('/student-results', [StudentResultsController::class, 'index'])->name('student.results');
+    Route::get('/student-settings', [StudentSettingsController::class, 'index'])->name('student.settings');
 });

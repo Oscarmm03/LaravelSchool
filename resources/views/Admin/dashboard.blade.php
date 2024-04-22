@@ -1,6 +1,5 @@
 <x-app-layout>
-    <div class="p-4">
+    <div>
         <x-welcome/>   
     </div>
-    
 </x-app-layout>

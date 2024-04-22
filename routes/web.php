@@ -34,6 +34,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     //Rutas ADMIN
     Route::get('/admin-users', [AdminUserController::class, 'index'])->name('admin.users');
     Route::get('/admin-settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
+    Route::get('/admin-users-create', [AdminUserController::class, 'create'])->name('admin.users.create');
+    Route::post('/admin-users-create', [AdminUserController::class, 'store'])->name('admin.users.store');
 
     //Rutas TEACHER
     Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');

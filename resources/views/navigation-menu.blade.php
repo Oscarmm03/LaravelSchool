@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-customBlue dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">  
+<nav x-data="{ open: false }" class="bg-gradient-to-r from-emerald-400 to-cyan-400 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">  
 <!-- Primary Navigation Menu -->
     <div class="w-screen h-24">
         <div class="flex justify-between border-b-2 border-customPurple px-3">

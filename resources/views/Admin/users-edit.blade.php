@@ -9,47 +9,39 @@
         </div>
 
         <div class="w-full p-8">
-            <h1 class="text-3xl font-bold text-gray-700 border-b-2">Añadir usuario</h1>
+            <h1 class="text-3xl font-bold text-gray-700 border-b-2">Editar usuario</h1>
             <div>
-                <form method="POST" action="{{ route('admin.users.store') }}">
+                <form method="POST" action="{{ route('admin.users.update', $user->id) }}">
                     @csrf
+                    @method('PUT')
                     <div class="mt-4">
                         <label for="name" class="block font-medium text-sm text-gray-700 dark:text-gray-300'">Nombre</label>
-                        <input type="text" name="name" id="name" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" :value="old('name')" required autofocus autocomplete="name">
+                        <input type="text" name="name" id="name" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" :value="$user->name" placeholder="{{ $user->name }}" required autofocus autocomplete="name">
                     </div>
                     <div class="mt-4">
                         <label for="email" class="block font-medium text-sm text-gray-700 dark:text-gray-300'">Email</label>
-                        <input type="email" name="email" id="email" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" :value="old('email')" required autofocus autocomplete="email">
-                    </div>
-                    <div class="mt-4">
-                        <label for="password" class="block font-medium text-sm text-gray-700 dark:text-gray-300'">Password</label>
-                        <input type="password" name="password" id="password" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autofocus>
-                    </div>
-                    <div class="mt-4">
-                        <label for="password_confirmation" class="block font-medium text-sm text-gray-700 dark:text-gray-300'">Repita la password</label>
-                        <input type="password" name="password_confirmation" id="password_confirmation" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autofocus>
+                        <input type="email" name="email" id="email" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" :value="$user->email" placeholder="{{ $user->email }}" required autofocus autocomplete="email">
                     </div>
                     <div class="mt-4">
                         <label for="role" class="block font-medium text-sm text-gray-700 dark:text-gray-300'">Rol</label>
                         <select id="role" class="w-1/3 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" name="role" required>
                             <option value="">Seleccione un rol</option>
-                            <option value="1">Admin</option>
-                            <option value="2">Teacher</option>
-                            <option value="3">Student</option>
+                            <option value="1" @if ($user->current_team_id == 1) selected @endif>Admin</option>
+                            <option value="2" @if ($user->current_team_id == 2) selected @endif>Teacher</option>
+                            <option value="3" @if ($user->current_team_id == 3) selected @endif>Student</option>
                         </select>
                     </div>
-
                     <div class="flex items-center justify-start mt-4">
                         <input type="submit" value="Guardar" class="inline-flex items-center px-4 py-2 bg-customPurple dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-customYellow dark:text-gray-800 uppercase tracking-widest hover:bg-customYellow hover:text-customPurple hover:cursor-pointer dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 active:text-white dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150">
                     </div>
                 </form>
             </div>
+
             @if (session('success'))
             <div class="text-green-500 mt-4">
                 {{ session('success') }}
             </div>
             @endif
-
             @if (session('error'))
             <div class="text-red-500 mt-4">
                 {{ session('error') }}
@@ -57,5 +49,4 @@
             @endif
         </div>
     </div>
-
 </x-app-layout>

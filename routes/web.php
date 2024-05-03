@@ -36,6 +36,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/admin-settings', [AdminSettingsController::class, 'index'])->name('admin.settings');
     Route::get('/admin-users-create', [AdminUserController::class, 'create'])->name('admin.users.create');
     Route::post('/admin-users-create', [AdminUserController::class, 'store'])->name('admin.users.store');
+    Route::get('/admin-users-edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/admin-users-edit/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/admin-users-delete/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 
     //Rutas TEACHER
     Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');

@@ -11,6 +11,8 @@ use App\Http\Controllers\TeacherGameController;
 use App\Http\Controllers\TeacherResultsController;
 use App\Http\Controllers\TeacherSettingsController;
 use App\Http\Controllers\TeacherUserController;
+use App\Http\Controllers\AdminCourseController;
+use App\Http\Controllers\AdminGameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,14 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/admin-users-edit/{id}', [AdminUserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/admin-users-edit/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
     Route::delete('/admin-users-delete/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+    Route::get('/admin-courses', [AdminCourseController::class, 'index'])->name('admin.courses');
+    Route::get('/admin-courses-create', [AdminCourseController::class, 'create'])->name('admin.courses.create');
+    Route::post('/admin-courses-create', [AdminCourseController::class, 'store'])->name('admin.courses.store');
+    Route::get('/admin-courses-edit/{id}', [AdminCourseController::class, 'edit'])->name('admin.courses.edit');
+    Route::put('/admin-courses-edit/{id}', [AdminCourseController::class, 'update'])->name('admin.courses.update');
+    Route::delete('/admin-courses-delete/{id}', [AdminCourseController::class, 'destroy'])->name('admin.courses.destroy');
+    Route::get('/admin-games', [AdminGameController::class, 'index'])->name('admin.games');
+
 
     //Rutas TEACHER
     Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');

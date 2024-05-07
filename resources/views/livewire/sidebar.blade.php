@@ -8,6 +8,12 @@
             <x-nav-link href="{{ route('admin.users') }}" :active="request()->routeIs('admin.users')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Gestión usuarios') }}
             </x-nav-link>
+            <x-nav-link href="{{ route('admin.games') }}" :active="request()->routeIs('admin.games')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+                {{ __('Juegos') }}
+            </x-nav-link>
+            <x-nav-link href="{{ route('admin.courses') }}" :active="request()->routeIs('admin.courses')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
+                {{ __('Gestión cursos') }}
+            </x-nav-link>
             <x-nav-link href="{{ route('admin.settings') }}" :active="request()->routeIs('admin.settings')" class="h-16 w-full flex justify-center items-center bg-customPurple text-white rounded-br-2xl text-xl">
                 {{ __('Ajustes') }}
             </x-nav-link>

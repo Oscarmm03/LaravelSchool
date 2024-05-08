@@ -48,6 +48,11 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::put('/admin-courses-edit/{id}', [AdminCourseController::class, 'update'])->name('admin.courses.update');
     Route::delete('/admin-courses-delete/{id}', [AdminCourseController::class, 'destroy'])->name('admin.courses.destroy');
     Route::get('/admin-games', [AdminGameController::class, 'index'])->name('admin.games');
+    Route::get('/admin-games-create', [AdminGameController::class, 'create'])->name('admin.games.create');
+    Route::post('/admin-games-create', [AdminGameController::class, 'store'])->name('admin.games.store');
+    Route::get('/admin-games-edit/{id}', [AdminGameController::class, 'edit'])->name('admin.games.edit');
+    Route::put('/admin-games-edit/{id}', [AdminGameController::class, 'update'])->name('admin.games.update');
+    Route::delete('/admin-games-delete/{id}', [AdminGameController::class, 'destroy'])->name('admin.games.destroy');
 
 
     //Rutas TEACHER

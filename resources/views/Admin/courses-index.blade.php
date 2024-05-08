@@ -92,7 +92,7 @@
                         {{ $courses->links() }}
                         @else
                         <div class="w-full flex justify-center mt-4">
-                            <p class="font-light text-sm text-gray-500">No hay más juegos</p>
+                            <p class="font-light text-sm text-gray-500">No hay más cursos</p>
                         </div>
                         @endif
                     </div>

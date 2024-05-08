@@ -72,11 +72,11 @@ class User extends Authenticatable
     }
     public function course()
     {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class, 'teacher_id');
     }
     public function courseEnrollment()
     {
-        return $this->hasMany(CourseEnrollment::class);
+        return $this->hasMany(CourseEnrollment::class, 'user_id');
     }
     public function forumPost()
     {

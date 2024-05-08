@@ -11,7 +11,7 @@ class AdminCourseController extends Controller
 {
     public function index()
     {   
-        $courses = Course::with('teacher', 'department', 'enrollments')->get();
+        $courses = Course::with('teacher', 'department', 'enrollments')->paginate(10);
         return view('admin.courses-index', ['courses' => $courses]); 
     }
 

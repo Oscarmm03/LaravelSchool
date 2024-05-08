@@ -9,7 +9,7 @@ class AdminGameController extends Controller
 {
     public function index()
     {
-        $games = EducationalGame::all();
+        $games = EducationalGame::paginate(10);
         return view('admin.games-index', ['games' => $games]);
     }
 

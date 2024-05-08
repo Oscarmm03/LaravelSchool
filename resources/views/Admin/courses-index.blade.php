@@ -87,6 +87,15 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div>
+                        @if($courses->hasPages())
+                        {{ $courses->links() }}
+                        @else
+                        <div class="w-full flex justify-center mt-4">
+                            <p class="font-light text-sm text-gray-500">No hay más juegos</p>
+                        </div>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

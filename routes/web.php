@@ -59,7 +59,13 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
     Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');
     Route::get('/teacher-users-edit/{id}', [TeacherUserController::class, 'edit'])->name('teacher.users.edit');
     Route::post('/teacher-users-edit/{id}', [TeacherUserController::class, 'assignCourse'])->name('teacher.users.assignCourse');
+    Route::delete('/teacher-users-delete/{id}', [TeacherUserController::class, 'unassignCourse'])->name('teacher.users.unassignCourse');
     Route::get('/teacher-games', [TeacherGameController::class, 'index'])->name('teacher.games');
+    Route::get('teacher-games-assign-user/{id}', [TeacherGameController::class, 'assignGameUser'])->name('teacher.games.assignUser');
+    Route::post('teacher-games-assign-user/{id}', [TeacherGameController::class, 'storeGameUserAssign'])->name('teacher.games.storeGameUserAssign');
+    Route::get('teacher-games-assign-course/{id}', [TeacherGameController::class, 'assignGameCourse'])->name('teacher.games.assignCourse');
+    Route::post('teacher-games-assign-course/{id}', [TeacherGameController::class, 'storeGameCourseAssign'])->name('teacher.games.storeGameCourseAssign');
+
     Route::get('/teacher-results', [TeacherResultsController::class, 'index'])->name('teacher.results');
     Route::get('/teacher-settings', [TeacherSettingsController::class, 'index'])->name('teacher.settings');
 

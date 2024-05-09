@@ -11,7 +11,7 @@ class TeacherUserController extends Controller
 {
     public function index()
     {
-        $users = User::with('courseEnrollment', 'course')->paginate(10);
+        $users = User::with('courseEnrollment', 'course')->paginate(20);
         $enrollments = CourseEnrollment::with('course')->get();
         $courses = Course::with('teacher')->get();
         return view('Teacher.users-index', ['users' => $users, 'enrollments' => $enrollments, 'courses' => $courses]);
@@ -19,7 +19,7 @@ class TeacherUserController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id)->with('courseEnrollment')->first();
+        $user = User::with('courseEnrollment', 'course')->find($id);
         $courses = Course::all();
         return view('Teacher.users-edit', ['user' => $user, 'courses' => $courses]);
     }
@@ -36,6 +36,17 @@ class TeacherUserController extends Controller
             return redirect()->route('teacher.users.edit', $id)->with('success', 'Course assigned successfully');
         } catch (\Exception $e) {
             return redirect()->route('teacher.users.edit', $id)->with('error', 'An error occurred while assigning the course');
+        }
+    }
+
+    public function unassignCourse($id)
+    {
+        $enrollment = CourseEnrollment::find($id);
+        try {
+            $enrollment->delete();
+            return redirect()->route('teacher.users')->with('success', 'Course unassigned successfully');
+        } catch (\Exception $e) {
+            return redirect()->route('teacher.users')->with('error', 'An error occurred while unassigning the course');
         }
     }
 }

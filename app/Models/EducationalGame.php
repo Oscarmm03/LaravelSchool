@@ -20,5 +20,10 @@ class EducationalGame extends Model
     {
         return $this->hasMany(GameSession::class);
     }
+
+    public function gameStudent()
+    {
+        return $this->hasMany(GameStudent::class);
+    }
     
 }

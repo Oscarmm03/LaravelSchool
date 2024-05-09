@@ -99,6 +99,9 @@ class User extends Authenticatable
         return $this->hasMany(QuizResponse::class);
     }
 
-
+    public function gameEstudent()
+    {
+        return $this->hasMany(GameStudent::class);
+    }
 
 }

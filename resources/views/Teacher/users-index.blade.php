@@ -39,37 +39,41 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-    @foreach ($users as $user)
-        @if ($user->current_team_id == 3)
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    @foreach ($enrollments as $enrollment)
-                        @if ($enrollment->user_id == $user->id)
-                            {{ $enrollment->course->title }}
-                        @endif
-                    @endforeach
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    @foreach ($enrollments as $enrollment)
-                        @if ($enrollment->user_id == $user->id)
-                            {{ $enrollment->course->teacher->name }}
-                        @endif
-                    @endforeach
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <a href="{{ route('teacher.users.edit', ['id' => $user->id]) }}" class="text-indigo-600 hover:text-indigo-900">Asignar curso</a>
-                    <form action="" method="POST" class="inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="text-red-600 hover:text-red-900">Eliminar</button>
-                    </form>
-                </td>
-            </tr>
-        @endif
-    @endforeach
-</tbody>
+                            @foreach ($users as $user)
+                            @if ($user->current_team_id == 3)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @foreach ($enrollments as $enrollment)
+                                    @if ($enrollment->user_id == $user->id)
+                                    {{ $enrollment->course->title }}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @foreach ($enrollments as $enrollment)
+                                    @if ($enrollment->user_id == $user->id)
+                                    {{ $enrollment->course->teacher->name }}
+                                    @endif
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <a href="{{ route('teacher.users.edit', ['id' => $user->id]) }}" class="text-indigo-600 hover:text-indigo-900">Asignar curso</a>
+                                    @foreach ($enrollments as $enrollment)
+                                    @if ($enrollment->user_id == $user->id)
+                                    <form action="{{ route('teacher.users.unassignCourse', ['id' => $enrollment->id]) }}" method="POST" class="inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-600 hover:text-red-900">Eliminar curso</button>
+                                    </form>
+                                    @endif
+                                    @endforeach
+                                </td>
+                            </tr>
+                            @endif
+                            @endforeach
+                        </tbody>
 
                     </table>
                     <div>

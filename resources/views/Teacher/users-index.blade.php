@@ -3,7 +3,7 @@
         <div>
             <div class="w-full p-8">
                 <h1 class="text-3xl font-bold text-gray-700 border-b-2">Estudiantes</h1>
-                
+
                 @if (session('success'))
                 <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mt-4" role="alert">
                     <p class="font-bold">Congratulations!</p>
@@ -39,41 +39,42 @@
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($students as $student)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <div class="ml-4">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                {{ $student->name }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900">{{ $student->email }}</div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900"></div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-900"></div>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <a href="" class="text-indigo-600 hover:text-indigo-900">Editar</a>
-                                    <form action="" method="POST" class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900">Eliminar</button>
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
+    @foreach ($users as $user)
+        @if ($user->current_team_id == 3)
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    @foreach ($enrollments as $enrollment)
+                        @if ($enrollment->user_id == $user->id)
+                            {{ $enrollment->course->title }}
+                        @endif
+                    @endforeach
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    @foreach ($enrollments as $enrollment)
+                        @if ($enrollment->user_id == $user->id)
+                            {{ $enrollment->course->teacher->name }}
+                        @endif
+                    @endforeach
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <a href="{{ route('teacher.users.edit', ['id' => $user->id]) }}" class="text-indigo-600 hover:text-indigo-900">Asignar curso</a>
+                    <form action="" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-red-600 hover:text-red-900">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        @endif
+    @endforeach
+</tbody>
+
                     </table>
                     <div>
-                        @if($students->hasPages())
-                        {{ $students->links() }}
+                        @if($users->hasPages())
+                        {{ $users->links() }}
                         @else
                         <div class="w-full flex justify-center mt-4">
                             <p class="font-light text-sm text-gray-500">No hay más estudiantes</p>

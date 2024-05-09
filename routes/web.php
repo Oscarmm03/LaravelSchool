@@ -57,9 +57,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified',])
 
     //Rutas TEACHER
     Route::get('/teacher-users', [TeacherUserController::class, 'index'])->name('teacher.users');
+    Route::get('/teacher-users-edit/{id}', [TeacherUserController::class, 'edit'])->name('teacher.users.edit');
+    Route::post('/teacher-users-edit/{id}', [TeacherUserController::class, 'assignCourse'])->name('teacher.users.assignCourse');
     Route::get('/teacher-games', [TeacherGameController::class, 'index'])->name('teacher.games');
     Route::get('/teacher-results', [TeacherResultsController::class, 'index'])->name('teacher.results');
     Route::get('/teacher-settings', [TeacherSettingsController::class, 'index'])->name('teacher.settings');
+
 
     //Rutas STUDENT
     Route::get('/student-games', [StudentGameController::class, 'index'])->name('student.games');

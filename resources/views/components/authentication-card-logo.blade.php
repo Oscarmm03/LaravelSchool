@@ -1,3 +1,3 @@
 <a href="/">
-    <img class="w-24 h-24" src="{{ asset('img/linkon-logo-no-bg.png') }}" alt="">
+    <img class="w-48 h-48" src="{{ asset('img/Logo_.png') }}" alt="Logo">
 </a>

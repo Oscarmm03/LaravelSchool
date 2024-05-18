@@ -1,8 +1,8 @@
-<nav x-data="{ open: false }" class="bg-gradient-to-r from-emerald-400 to-cyan-400 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">  
+<nav x-data="{ open: false }" class="bg-slate-100 border-b-4 border-yellow-400">  
 <!-- Primary Navigation Menu -->
-    <div class="w-screen h-24">
-        <div class="flex justify-between border-b-2 border-customPurple px-3">
-            <div class="flex w-64 justify-center">
+    <div class="w-screen h-40">
+        <div class="flex justify-between px-3">
+            <div class="flex w-64 justify-center mt-8">
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('dashboard') }}">
@@ -73,15 +73,17 @@
                                     <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                 </button>
                             @else
-                                <span class="inline-flex rounded-md">
-                                    <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none focus:bg-gray-50 dark:focus:bg-gray-700 active:bg-gray-50 dark:active:bg-gray-700 transition ease-in-out duration-150">
-                                        {{ Auth::user()->name }}
-
-                                        <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </button>
-                                </span>
+                            <!-- boton de usuario -->
+                            <span class="inline-flex rounded-md mt-4 ms-4">
+                                <button type="button" class="inline-flex items-center px-6 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-700 bg-yellow-300 hover:bg-yellow-400 hover:text-black focus:outline-none focus:bg-yellow-400 active:bg-yellow-400 transition ease-in-out duration-150">
+                                    {{ Auth::user()->name }}
+                                    <svg class="ms-2 -me-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </button>
+                            </span>
+                            
+                            
                             @endif
                         </x-slot>
 
@@ -108,7 +110,7 @@
                                 @csrf
 
                                 <x-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                        @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>

@@ -1,17 +1,15 @@
 <x-app-layout>
-    <div class="min-h-screen flex items-center justify-center">
-        <div class="">
-            <!-- el logo -->
-            <img src="{{ asset('img/linkon-logo-no-bg.png') }}" alt="Linkón">
-        </div>
-        <div class="flex flex-col -mt-56 -ml-10">
-            <div>
-                <img class="-z-10 -mt-96" src="{{ asset('img/globo-no-bg.png') }}" alt="Bocadillo">
+    <!-- Contenedor principal con la imagen de fondo -->
+    <div class="min-h-screen flex flex-col items-center justify-center text-center bg-cover bg-center" style="background-image: url('{{ asset('img/fondo2.jpg') }}'); background-position: center bottom;">
+        <div class="bg-white bg-opacity-75 p-8 rounded-lg shadow-md -mt-16">
+            <div class="mb-8">
+                <!-- Logotipo centrado -->
+                <img src="{{ asset('img/Logo_.png') }}" alt="Linkón" class="mx-auto">
             </div>
-            <div class="-mt-80">
-                <h3 class="pl-11 -mt-16 text-2xl">Hola {{ Auth::user()->name }} &#x1F44B;</h3>
-                <p class="pl-11 w-96 text-xl text-justify">Bienvenido a LinkOn. </p>
-                <p id="welcome-text" class="pl-11 w-96 text-xl text-justify"></p>
+            <div class="flex flex-col items-center">
+                <h3 class="text-2xl mb-4">Hola {{ Auth::user()->name }} &#x1F44B;</h3>
+                <p class="w-72 sm:w-96 text-xl mb-2">Bienvenido a LinkOn.</p>
+                <p id="welcome-text" class="w-72 sm:w-96 text-xl"></p>
             </div>
         </div>
     </div>
